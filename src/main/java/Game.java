@@ -10,9 +10,6 @@ public class Game {
 
     public String getScore() {
 
-        // System.out.println(playerA.getActualScore());
-        // System.out.println(playerB.getActualScore());
-
         if (playerA.getActualScore() >= 3 && playerB.getActualScore() >= 3) {
 
             if ((playerA.getActualScore() - playerB.getActualScore()) >= 2) {

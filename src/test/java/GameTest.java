@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -6,25 +7,29 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class GameTest {
 
     Game game;
+    Player playerA;
+    Player playerB;
+
+
+    private Game beforeGameTest(){
+        playerA = new Player("Jack");
+        playerB = new Player("Josh");
+        return new Game(playerA,playerB);
+    }
 
     @Test
     public void createTwoPlayers() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         assertThat("Jack", equalTo(playerA.getName()));
-
         assertThat("Josh", equalTo(playerB.getName()));
     }
 
     @Test
     public void PlayerAreScoresZeroThenReturnLove() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         assertThat("Love : Love", equalTo(game.getScore()));
 
@@ -33,9 +38,7 @@ public class GameTest {
     @Test
     public void ifPlayerAScoresOneThenReturnFifteen() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
 
@@ -46,9 +49,7 @@ public class GameTest {
     @Test
     public void ifPlayerBScoresTwoThenReturnThirty() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
 
@@ -60,9 +61,7 @@ public class GameTest {
     @Test
     public void ifPlayerScoresThreeThenReturnForty() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
         playerA.scorePoint();
@@ -75,9 +74,7 @@ public class GameTest {
     @Test
     public void checkAdvantage() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
         playerA.scorePoint();
@@ -92,15 +89,12 @@ public class GameTest {
 
         assertThat("Jack Advantage.", equalTo(game.getScore()));
 
-
     }
 
     @Test
     public void checkDeuce() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
         playerA.scorePoint();
@@ -117,9 +111,7 @@ public class GameTest {
     @Test
     public void checkPlayerAWon() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
         playerA.scorePoint();
@@ -138,9 +130,7 @@ public class GameTest {
     @Test
     public void checkPlayerBWon() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
         playerA.scorePoint();
@@ -160,9 +150,7 @@ public class GameTest {
     @Test
     public void checkPlayerAHasFifteenAndPlayerBHasForty() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
 
@@ -178,9 +166,7 @@ public class GameTest {
     @Test
     public void checkPlayerAHasThirtyAndPlayerBHasForty() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
         playerA.scorePoint();
@@ -197,9 +183,7 @@ public class GameTest {
     @Test
     public void checkPlayerAHasZeroAndPlayerBHasForty() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerB.scorePoint();
         playerB.scorePoint();
@@ -213,9 +197,7 @@ public class GameTest {
     @Test
     public void checkNotDeuceButEqualPoint() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
         playerA.scorePoint();
@@ -230,9 +212,7 @@ public class GameTest {
     @Test
     public void checkFifteenEqualPoints() {
 
-        Player playerA = new Player("Jack");
-        Player playerB = new Player("Josh");
-        game = new Game(playerA, playerB);
+        game = beforeGameTest();
 
         playerA.scorePoint();
 

@@ -5,17 +5,16 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class PlayerTest {
 
-    @Test
-    public void createPlayer() {
 
-        Player player = new Player("Jack");
+    private Player createPlayer() {
 
-        assertThat("Jack", equalTo(player.getName()));
+        return new Player("Jack");
+
     }
 
     @Test
     public void checkPlayerName() {
-        Player player = new Player("Jack");
+        Player player = createPlayer();
 
         assertThat("Jack", equalTo(player.getName()));
     }
@@ -23,14 +22,14 @@ public class PlayerTest {
     @Test
     public void checkPlayerScoreIsZero() {
 
-        Player player = new Player("Jack");
+        Player player = createPlayer();
 
         assertThat(0, equalTo(player.getActualScore()));
     }
 
     @Test
     public void checkPlayerScoresPoints() {
-        Player player = new Player("Jack");
+        Player player = createPlayer();
         player.scorePoint();
         player.scorePoint();
         assertThat(2, equalTo(player.getActualScore()));
@@ -39,7 +38,7 @@ public class PlayerTest {
 
     @Test
     public void checkPlayerScoreDescription() {
-        Player player = new Player("Jack");
+        Player player = createPlayer();
         player.scorePoint();
         player.scorePoint();
         assertThat("Thirty", equalTo(player.getScoreDescription()));
